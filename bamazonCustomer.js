@@ -9,7 +9,7 @@ var connection = mysql.createConnection({
   // Your username
   user: "root",
   // Your password
-  password: "1nfin.8Plume",
+  password: "",
   database: "bamazon_db"
 });
 
@@ -21,6 +21,11 @@ connection.connect(function(err) {
 function start() {
     inquirer
     .prompt({
+        name: "idInput",
+        type: "input",
+        message: "Enter product ID for item you would like to purchase",
+    })
+    .then(function(product) {
         
     })
 }
