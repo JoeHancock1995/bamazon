@@ -12,13 +12,24 @@ var connection = mysql.createConnection({
   password: "",
   database: "bamazon_db"
 });
-
+//connect to mysql
+//console.log("connected as id " + connection.threadId);
+// connection.end();
+// delete start
 connection.connect(function(err) {
   if (err) throw err;
   start();
 });
 
-//Asks user for product ID for what they want to purchase
+// displays products for sale
+function start(){
+    connection.query("SELECT * FROM products" , function(err, results) {
+        if (err) throw err;
+        console.log(results);
+    })
+}
+
+/*Asks user for product ID for what they want to purchase
 function start() {
     inquirer
     .prompt([
@@ -26,7 +37,12 @@ function start() {
         name: "item",
         type: "input",
         message: "Enter product ID for item you would like to purchase",
-    },
+    })
+    .then(function(answer) {
+        connection.query(
+            "SELECT "
+        )
+    }
 //Asks user for the amount they want to purchase of that item
     {
         name: "amount",
@@ -42,4 +58,4 @@ function start() {
 ])
 
 // this application then fetches the data of the 10 items ive created in mysql
-// display the items
+// display the items*/
