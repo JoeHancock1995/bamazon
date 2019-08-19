@@ -15,19 +15,31 @@ var connection = mysql.createConnection({
 
 connection.connect(function(err) {
   if (err) throw err;
-  console.log("connected as id " + connection.threadId);
   start();
 });
+
+//Asks user for product ID for what they want to purchase
 function start() {
     inquirer
-    .prompt({
-        name: "idInput",
+    .prompt([
+    {
+        name: "item",
         type: "input",
         message: "Enter product ID for item you would like to purchase",
-    })
-    .then(function(product) {
-        
-    })
-}
+    },
+//Asks user for the amount they want to purchase of that item
+    {
+        name: "amount",
+        type: "input",
+        message: "Enter amount you would like to purchase?",
+        validate: function(value) {
+            if (isNaN(value) === false) {
+              return true;
+            }
+            return false;
+        }
+    }
+])
+
 // this application then fetches the data of the 10 items ive created in mysql
 // display the items
