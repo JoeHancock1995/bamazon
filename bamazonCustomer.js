@@ -12,50 +12,34 @@ var connection = mysql.createConnection({
   password: "",
   database: "bamazon_db"
 });
-//connect to mysql
-//console.log("connected as id " + connection.threadId);
-// connection.end();
-// delete start
-connection.connect(function(err) {
+
+//connect to mysql and display products for sale and initiates start function
+connection.query("SELECT * FROM products" , function(err, results) {
   if (err) throw err;
+  console.log(results);
   start();
 });
 
-// displays products for sale
 function start(){
-    connection.query("SELECT * FROM products" , function(err, results) {
-        if (err) throw err;
-        console.log(results);
-    })
-}
-
-/*Asks user for product ID for what they want to purchase
-function start() {
+//Asks user for product ID for what they want to purchase
     inquirer
-    .prompt([
-    {
-        name: "item",
-        type: "input",
-        message: "Enter product ID for item you would like to purchase",
-    })
-    .then(function(answer) {
-        connection.query(
-            "SELECT "
-        )
-    }
-//Asks user for the amount they want to purchase of that item
-    {
-        name: "amount",
-        type: "input",
-        message: "Enter amount you would like to purchase?",
-        validate: function(value) {
-            if (isNaN(value) === false) {
-              return true;
+        .prompt([
+            {
+                name: "item",
+                type: "input",
+                message: "Enter product ID for item you would like to purchase",
+            },
+            {
+                name: "amount",
+                type: "input",
+                message: "Enter amount you would like to purchase?",
+                    validate: function(value) {
+                    if (isNaN(value) === false) {
+                        return true;
+                    }
+                        return false;
+                }
             }
-            return false;
-        }
-    }
-])
+        ])
 
-// this application then fetches the data of the 10 items ive created in mysql
-// display the items*/
+}
