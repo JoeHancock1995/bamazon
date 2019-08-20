@@ -14,7 +14,7 @@ var connection = mysql.createConnection({
 });
 
 //connect to mysql and display products for sale and initiates start function
-connection.query("SELECT * FROM products" , function(err, results) {
+connection.query("SELECT id, productName, departmentName, price FROM products" , function(err, results) {
   if (err) throw err;
   console.log(results);
   start();
