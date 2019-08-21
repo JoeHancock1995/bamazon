@@ -54,4 +54,4 @@ function start(){
 // Challenge for future: If the quantity of product is less than x amount put a notification asking user to limit to y per order
 
 //ask if theirs any other purchases, if yes restart with updated sql
-// if no terminate 
+// if no terminate app
