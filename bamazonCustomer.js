@@ -28,6 +28,7 @@ function start(){
                 name: "item",
                 type: "input",
                 message: "Enter product ID for item you would like to purchase",
+                
             },
             {
                 name: "amount",
@@ -38,8 +39,19 @@ function start(){
                         return true;
                     }
                         return false;
+                    }
                 }
-            }
-        ])
+            ])
+        };
+// take information from user and SELECT from mysql for product id then  store it 
 
-}
+// take quantity and if quantity greater than input amount allow 'purchase'
+// using either UPDATE, MODIFY, or if nothing else works DELETE/ INSERT updated data some how that shows the stock after purchase
+
+// if desired amount exceeds the stock then prompt user that transaction can not be completed because of lack of items,
+// restart the quanity inquirer prompt
+
+// Challenge for future: If the quantity of product is less than x amount put a notification asking user to limit to y per order
+
+//ask if theirs any other purchases, if yes restart with updated sql
+// if no terminate 
